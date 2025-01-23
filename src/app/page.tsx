@@ -1,5 +1,16 @@
+"use client";
+
 import Link from "next/link";
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  BarChart2,
+  FileText,
+  Scale,
+  AlertTriangle,
+} from "lucide-react";
 import executiveOrders from "@/data/executive-orders.json";
+import StatCard from "@/components/StatCard";
 
 export default function Home() {
   // Calculate statistics
@@ -16,57 +27,66 @@ export default function Home() {
   ).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-      <main className="max-w-4xl mx-auto px-4 py-16 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-950">
+      <main className="max-w-5xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
-            Trump Executive Orders Tracker
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-20"
+        >
+          <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl">
+            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
+              Trump Executive Orders Tracker
+            </span>
           </h1>
-          <p className="mt-3 text-base text-gray-500 dark:text-gray-400 sm:mx-auto sm:mt-5 sm:max-w-xl sm:text-lg md:mt-5 md:text-xl">
+          <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 sm:mx-auto sm:max-w-2xl">
             A community-driven effort to track the status, implementation, and
             legal challenges of Trump's Executive Orders.
           </p>
-        </div>
+        </motion.div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 mb-12">
-          <StatCard title="Total EOs" value={totalEOs} />
-          <StatCard title="Blocked" value={blockedByLawsuit} />
-          <StatCard title="In Progress" value={inProgress} />
-          <StatCard title="Active" value={active} />
-        </div>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+          className="grid grid-cols-2 gap-6 sm:grid-cols-4 mb-16"
+        >
+          <StatCard title="Total EOs" value={totalEOs} icon={<FileText />} />
+          <StatCard title="Blocked" value={blockedByLawsuit} icon={<Scale />} />
+          <StatCard
+            title="In Progress"
+            value={inProgress}
+            icon={<BarChart2 />}
+          />
+          <StatCard title="Unclear" value={unclear} icon={<AlertTriangle />} />
+        </motion.div>
 
         {/* CTA Buttons */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="flex flex-col sm:flex-row gap-6 justify-center"
+        >
           <Link
             href="/executive-orders"
-            className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
+            className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-colors duration-300"
           >
             View All Executive Orders
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
           <Link
             href="/contribute"
-            className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 dark:border-gray-600 text-base font-medium rounded-md text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700"
+            className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-full hover:bg-gray-100 transition-colors duration-300 border-2 border-blue-600"
           >
             How to Contribute
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
-        </div>
+        </motion.div>
       </main>
-    </div>
-  );
-}
-
-// Stat Card Component
-function StatCard({ title, value }: { title: string; value: number }) {
-  return (
-    <div className="bg-white dark:bg-gray-800 overflow-hidden shadow rounded-lg p-6">
-      <dt className="text-sm font-medium text-gray-500 dark:text-gray-400 truncate">
-        {title}
-      </dt>
-      <dd className="mt-1 text-3xl font-semibold text-gray-900 dark:text-white">
-        {value}
-      </dd>
     </div>
   );
 }
