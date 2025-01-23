@@ -27,7 +27,7 @@ export default function Home() {
   ).length;
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-950">
+    <div className="min-h-screen bg-white dark:bg-black">
       <main className="max-w-5xl mx-auto px-4 py-20 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <motion.div
@@ -36,12 +36,10 @@ export default function Home() {
           transition={{ duration: 0.5 }}
           className="text-center mb-20"
         >
-          <h1 className="text-5xl font-extrabold tracking-tight text-gray-900 dark:text-white sm:text-6xl md:text-7xl">
-            <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600">
-              Trump Executive Orders Tracker
-            </span>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl md:text-6xl">
+            Trump Executive Orders Tracker
           </h1>
-          <p className="mt-6 text-xl text-gray-600 dark:text-gray-300 sm:mx-auto sm:max-w-2xl">
+          <p className="mt-6 text-lg text-gray-600 dark:text-gray-400 sm:mx-auto sm:max-w-2xl">
             A community-driven effort to track the status, implementation, and
             legal challenges of Trump's Executive Orders.
           </p>
@@ -73,17 +71,17 @@ export default function Home() {
         >
           <Link
             href="/executive-orders"
-            className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-white bg-blue-600 rounded-full hover:bg-blue-700 transition-colors duration-300"
+            className="group inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-white bg-gray-900 rounded-md hover:bg-gray-800 transition-colors duration-300 dark:bg-white dark:text-gray-900 dark:hover:bg-gray-100"
           >
             View All Executive Orders
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
           <Link
             href="/contribute"
-            className="group inline-flex items-center justify-center px-8 py-4 text-lg font-semibold text-blue-600 bg-white rounded-full hover:bg-gray-100 transition-colors duration-300 border-2 border-blue-600"
+            className="group inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-gray-900 bg-white rounded-md hover:bg-gray-100 transition-colors duration-300 border border-gray-300 dark:text-white dark:bg-gray-900 dark:hover:bg-gray-800 dark:border-gray-700"
           >
             How to Contribute
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+            <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
           </Link>
         </motion.div>
       </main>

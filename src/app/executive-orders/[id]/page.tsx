@@ -26,7 +26,7 @@ export default function ExecutiveOrderDetail() {
           <h1 className="text-2xl font-bold">Executive Order not found</h1>
           <Link
             href="/executive-orders"
-            className="text-blue-600 hover:underline mt-4 inline-block"
+            className="text-primary hover:text-primary-hover hover:underline mt-4 inline-block"
           >
             Back to Executive Orders
           </Link>
@@ -36,12 +36,12 @@ export default function ExecutiveOrderDetail() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-950">
+    <div className="min-h-screen bg-background">
       <main className="max-w-4xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         {/* Back Button */}
         <Link
           href="/executive-orders"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8"
+          className="inline-flex items-center text-primary hover:text-primary-hover mb-8"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Executive Orders
@@ -61,7 +61,7 @@ export default function ExecutiveOrderDetail() {
               href={eo.link}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 hover:text-blue-800 inline-flex items-center"
+              className="text-primary hover:text-primary-hover inline-flex items-center"
             >
               Official Link
               <ExternalLink className="h-4 w-4 ml-1" />
@@ -125,9 +125,7 @@ export default function ExecutiveOrderDetail() {
                     <div
                       key={i}
                       className={`h-2 w-8 mr-1 rounded ${
-                        i < eo.forecastImpact
-                          ? "bg-blue-600"
-                          : "bg-gray-200 dark:bg-gray-700"
+                        i < eo.forecastImpact ? "bg-blue-500" : "bg-gray-200"
                       }`}
                     />
                   ))}
@@ -137,9 +135,9 @@ export default function ExecutiveOrderDetail() {
               <div>
                 <p className="text-sm text-gray-500 mb-1">Stall Probability</p>
                 <div className="flex items-center">
-                  <div className="flex-1 bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                  <div className="flex-1 bg-gray-200 rounded-full h-2">
                     <div
-                      className="bg-blue-600 h-2 rounded-full"
+                      className="bg-blue-500 h-2 rounded-full"
                       style={{ width: `${eo.forecastStall * 100}%` }}
                     />
                   </div>
@@ -184,10 +182,10 @@ export default function ExecutiveOrderDetail() {
         <div className="text-center text-sm text-gray-500">
           <p>Last updated: {new Date(eo.lastUpdated).toLocaleDateString()}</p>
           <a
-            href="https://github.com/yourusername/your-repo/issues/new"
+            href="https://github.com/HueXiPrime/Trump-Executive-Order-Tracker/issues/new"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-blue-600 hover:text-blue-800 mt-2 inline-block"
+            className="text-primary hover:text-primary-hover mt-2 inline-block"
           >
             Spot something wrong? Create an Issue →
           </a>
