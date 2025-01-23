@@ -63,19 +63,20 @@ export default function Contribute() {
                 <li>
                   Edit{" "}
                   <code className="bg-gray-700 px-2 py-1 rounded">
-                    data/executive-orders.json
-                  </code>
+                    executive-orders.json
+                  </code>{" "}
+                  in the main branch
                 </li>
                 <li>Submit a Pull Request</li>
               </ol>
               <a
-                href="https://github.com/HueXiPrime/Trump-Executive-Order-Tracker"
+                href="https://github.com/HueXiPrime/executive-orders-data"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center mt-4 text-blue-600 hover:text-blue-800"
               >
                 <Github className="h-4 w-4 mr-2" />
-                View Repository
+                View Data Repository
               </a>
             </div>
 
@@ -90,7 +91,7 @@ export default function Contribute() {
                 suggested changes.
               </p>
               <a
-                href="https://github.com/HueXiPrime/Trump-Executive-Order-Tracker/issues/new"
+                href="https://github.com/HueXiPrime/executive-orders-data/issues/new"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center text-blue-600 hover:text-blue-800"
@@ -98,6 +99,37 @@ export default function Contribute() {
                 Create an Issue →
               </a>
             </div>
+          </div>
+
+          {/* Data Format Example */}
+          <div className="bg-gray-800 rounded-lg shadow-lg p-8">
+            <h2 className="text-2xl font-semibold mb-6 text-white">
+              Data Format Example
+            </h2>
+            <pre className="bg-gray-900 p-4 rounded-lg overflow-x-auto text-sm text-gray-300">
+              {JSON.stringify(
+                {
+                  id: "eo-2024-01",
+                  name: "Example Executive Order",
+                  link: "https://example.gov/eo/2024-01",
+                  summary: "Brief summary of the executive order",
+                  status: EOStatus.ACTIVE,
+                  signedDate: "2024-01-01",
+                  notes: "Implementation details and current status",
+                  lastUpdated: "2024-01-15",
+                  forecastImpact: 3,
+                  forecastStall: 0.2,
+                  lawsuits: [
+                    {
+                      caseName: "State v. Federal Government",
+                      description: "Brief description of the legal challenge",
+                    },
+                  ],
+                },
+                null,
+                2
+              )}
+            </pre>
           </div>
 
           {/* Guidelines */}

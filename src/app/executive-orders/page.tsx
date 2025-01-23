@@ -1,15 +1,11 @@
 "use client";
 
-import { useState, useMemo, Suspense } from "react";
+import { useState, useMemo, useEffect, Suspense } from "react";
 import { Search, ChevronDown, ChevronUp, ArrowLeft } from "lucide-react";
-import executiveOrders from "@/data/executive-orders.json";
 import { EOStatus, type ExecutiveOrder } from "@/types/statusEnum";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useSearchParams } from "next/navigation";
-
-// Cast the JSON data to match the ExecutiveOrder type
-const typedExecutiveOrders = executiveOrders as unknown as ExecutiveOrder[];
 
 function ExecutiveOrdersContent() {
   const searchParams = useSearchParams();
@@ -20,9 +16,26 @@ function ExecutiveOrdersContent() {
   const [sortColumn, setSortColumn] =
     useState<keyof ExecutiveOrder>("signedDate");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
+  const [executiveOrders, setExecutiveOrders] = useState<ExecutiveOrder[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(
+      "https://raw.githubusercontent.com/HueXiPrime/executive-orders-data/refs/heads/main/executive-orders.json"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setExecutiveOrders(data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
 
   const filteredAndSortedEOs = useMemo(() => {
-    return typedExecutiveOrders
+    return executiveOrders
       .filter((eo: ExecutiveOrder) => {
         const matchesSearch =
           eo.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -38,7 +51,7 @@ function ExecutiveOrdersContent() {
           return sortDirection === "asc" ? 1 : -1;
         return 0;
       });
-  }, [searchTerm, selectedStatus, sortColumn, sortDirection]);
+  }, [searchTerm, selectedStatus, sortColumn, sortDirection, executiveOrders]);
 
   const handleSort = (column: keyof ExecutiveOrder) => {
     if (column === sortColumn) {
@@ -57,6 +70,14 @@ function ExecutiveOrdersContent() {
       <ChevronDown className="inline w-4 h-4" />
     );
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+        <div className="text-xl">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background text-foreground">

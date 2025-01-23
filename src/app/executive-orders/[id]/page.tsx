@@ -1,17 +1,40 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { ArrowLeft, ExternalLink, Scale, Clock } from "lucide-react";
 import Link from "next/link";
-import executiveOrders from "@/data/executive-orders.json";
 import { ExecutiveOrder } from "@/types/statusEnum";
 
 export default function ExecutiveOrderDetail() {
   const { id } = useParams();
-  const eo = (executiveOrders as unknown as ExecutiveOrder[]).find(
-    (eo) => eo.id === id
-  );
+  const [eo, setEo] = useState<ExecutiveOrder | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(
+      "https://raw.githubusercontent.com/HueXiPrime/executive-orders-data/refs/heads/main/executive-orders.json"
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        const foundEo = data.find((eo: ExecutiveOrder) => eo.id === id);
+        setEo(foundEo || null);
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">Loading...</div>
+      </div>
+    );
+  }
 
   if (!eo) {
     return (

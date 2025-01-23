@@ -9,22 +9,52 @@ import {
   Scale,
   AlertTriangle,
 } from "lucide-react";
-import executiveOrders from "@/data/executive-orders.json";
-import StatCard from "@/components/StatCard";
+import { useEffect, useState } from "react";
 import { EOStatus } from "@/types/statusEnum";
+import StatCard from "@/components/StatCard";
 
 export default function Home() {
-  // Calculate statistics
-  const totalEOs = executiveOrders.length;
-  const blockedByLawsuit = executiveOrders.filter(
-    (eo) => eo.status === "Blocked by lawsuit"
-  ).length;
-  const inProgress = executiveOrders.filter(
-    (eo) => eo.status === "Implementation in progress"
-  ).length;
-  const unclear = executiveOrders.filter(
-    (eo) => eo.status === "Unclear / Hard to implement"
-  ).length;
+  const [stats, setStats] = useState({
+    totalEOs: 0,
+    blockedByLawsuit: 0,
+    inProgress: 0,
+    unclear: 0,
+  });
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(
+      "https://raw.githubusercontent.com/HueXiPrime/executive-orders-data/refs/heads/main/executive-orders.json"
+    )
+      .then((res) => res.json())
+      .then((executiveOrders) => {
+        setStats({
+          totalEOs: executiveOrders.length,
+          blockedByLawsuit: executiveOrders.filter(
+            (eo: any) => eo.status === "Blocked by lawsuit"
+          ).length,
+          inProgress: executiveOrders.filter(
+            (eo: any) => eo.status === "Implementation in progress"
+          ).length,
+          unclear: executiveOrders.filter(
+            (eo: any) => eo.status === "Unclear / Hard to implement"
+          ).length,
+        });
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-black flex items-center justify-center">
+        <div className="text-white">Loading...</div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-black">
@@ -54,25 +84,25 @@ export default function Home() {
         >
           <StatCard
             title="Total EOs"
-            value={totalEOs}
+            value={stats.totalEOs}
             icon={<FileText />}
             status="ALL"
           />
           <StatCard
             title="Blocked"
-            value={blockedByLawsuit}
+            value={stats.blockedByLawsuit}
             icon={<Scale />}
             status={EOStatus.BLOCKED}
           />
           <StatCard
             title="In Progress"
-            value={inProgress}
+            value={stats.inProgress}
             icon={<BarChart2 />}
             status={EOStatus.IN_PROGRESS}
           />
           <StatCard
             title="Unclear"
-            value={unclear}
+            value={stats.unclear}
             icon={<AlertTriangle />}
             status={EOStatus.UNCLEAR}
           />
