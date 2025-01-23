@@ -45,12 +45,10 @@ export default function ExecutiveOrderDetail() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 mb-8"
+          className="bg-gray-800 rounded-lg shadow-lg p-8 mb-8"
         >
           <div className="flex justify-between items-start">
-            <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-              {eo.name}
-            </h1>
+            <h1 className="text-3xl font-bold text-white mb-4">{eo.name}</h1>
             <a
               href={eo.link}
               target="_blank"
@@ -82,9 +80,7 @@ export default function ExecutiveOrderDetail() {
             </span>
           </div>
 
-          <p className="text-gray-600 dark:text-gray-300 text-lg mb-4">
-            {eo.summary}
-          </p>
+          <p className="text-gray-300 text-lg mb-4">{eo.summary}</p>
         </motion.div>
 
         {/* Details Grid */}
@@ -94,13 +90,13 @@ export default function ExecutiveOrderDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+            className="bg-gray-800 rounded-lg shadow-lg p-6"
           >
             <h2 className="text-xl font-semibold mb-4 flex items-center">
               <Clock className="h-5 w-5 mr-2" />
               Implementation Notes
             </h2>
-            <p className="text-gray-600 dark:text-gray-300">{eo.notes}</p>
+            <p className="text-gray-300">{eo.notes}</p>
           </motion.div>
 
           {/* Forecast */}
@@ -108,7 +104,7 @@ export default function ExecutiveOrderDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6"
+            className="bg-gray-800 rounded-lg shadow-lg p-6"
           >
             <h2 className="text-xl font-semibold mb-4">Forecast</h2>
             <div className="space-y-4">
@@ -150,7 +146,7 @@ export default function ExecutiveOrderDetail() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4 }}
-            className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 mb-8"
+            className="bg-gray-800 rounded-lg shadow-lg p-6 mb-8"
           >
             <h2 className="text-xl font-semibold mb-4 flex items-center">
               <Scale className="h-5 w-5 mr-2" />
@@ -163,9 +159,7 @@ export default function ExecutiveOrderDetail() {
                   className="border-b last:border-0 pb-4 last:pb-0"
                 >
                   <h3 className="font-semibold">{lawsuit.caseName}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 text-sm">
-                    {lawsuit.description}
-                  </p>
+                  <p className="text-gray-300 text-sm">{lawsuit.description}</p>
                 </li>
               ))}
             </ul>

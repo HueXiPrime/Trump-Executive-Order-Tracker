@@ -87,13 +87,13 @@ export default function ExecutiveOrders() {
             <input
               type="text"
               placeholder="Search executive orders..."
-              className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-150 ease-in-out"
+              className="w-full pl-10 pr-4 py-2 rounded-md border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-150 ease-in-out"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
             />
           </div>
           <select
-            className="px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-150 ease-in-out"
+            className="px-4 py-2 rounded-md border border-gray-700 bg-gray-800 text-white focus:ring-2 focus:ring-gray-400 focus:border-transparent transition duration-150 ease-in-out"
             value={selectedStatus}
             onChange={(e) =>
               setSelectedStatus(e.target.value as EOStatus | "ALL")
@@ -113,47 +113,47 @@ export default function ExecutiveOrders() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="overflow-x-auto bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700"
+          className="overflow-x-auto bg-gray-800 rounded-lg shadow-sm border border-gray-700"
         >
-          <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-            <thead className="bg-gray-50 dark:bg-gray-800">
+          <table className="min-w-full divide-y divide-gray-700">
+            <thead className="bg-gray-800">
               <tr>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-700 transition duration-150 ease-in-out"
                   onClick={() => handleSort("name")}
                 >
                   Title {renderSortIcon("name")}
                 </th>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-700 transition duration-150 ease-in-out"
                   onClick={() => handleSort("status")}
                 >
                   Status {renderSortIcon("status")}
                 </th>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-700 transition duration-150 ease-in-out"
                   onClick={() => handleSort("signedDate")}
                 >
                   Date Issued {renderSortIcon("signedDate")}
                 </th>
                 <th
-                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 transition duration-150 ease-in-out"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-400 uppercase tracking-wider cursor-pointer hover:bg-gray-700 transition duration-150 ease-in-out"
                   onClick={() => handleSort("forecastImpact")}
                 >
                   Impact {renderSortIcon("forecastImpact")}
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+            <tbody className="bg-gray-800 divide-y divide-gray-700">
               {filteredAndSortedEOs.map((eo: ExecutiveOrder) => (
                 <tr
                   key={eo.id}
-                  className="hover:bg-gray-50 dark:hover:bg-gray-700 transition duration-150 ease-in-out"
+                  className="hover:bg-gray-700 transition duration-150 ease-in-out"
                 >
                   <td className="px-6 py-4">
                     <Link
                       href={`/executive-orders/${eo.id}`}
-                      className="text-gray-900 dark:text-white hover:text-gray-600 dark:hover:text-gray-300 font-medium"
+                      className="text-white hover:text-gray-300 font-medium"
                     >
                       {eo.name}
                     </Link>
@@ -167,10 +167,10 @@ export default function ExecutiveOrders() {
                       {eo.status}
                     </span>
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  <td className="px-6 py-4 text-sm text-gray-400">
                     {new Date(eo.signedDate).toLocaleDateString()}
                   </td>
-                  <td className="px-6 py-4 text-sm text-gray-500 dark:text-gray-400">
+                  <td className="px-6 py-4 text-sm text-gray-400">
                     <div className="flex items-center gap-3">
                       <span className="min-w-[1rem] text-center">
                         {eo.forecastImpact}
@@ -202,21 +202,21 @@ export default function ExecutiveOrders() {
 function getStatusColor(status: EOStatus): string {
   switch (status) {
     case EOStatus.ACTIVE:
-      return "bg-green-100 text-green-700 dark:bg-green-800/30 dark:text-green-400";
+      return "bg-green-800/30 text-green-400";
     case EOStatus.IN_PROGRESS:
-      return "bg-yellow-100 text-yellow-700 dark:bg-yellow-800/30 dark:text-yellow-400";
+      return "bg-yellow-800/30 text-yellow-400";
     case EOStatus.BLOCKED:
     case EOStatus.PARTIALLY_BLOCKED:
-      return "bg-red-100 text-red-700 dark:bg-red-800/30 dark:text-red-400";
+      return "bg-red-800/30 text-red-400";
     case EOStatus.RESCINDED:
-      return "bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-400";
+      return "bg-gray-800/30 text-gray-400";
     case EOStatus.AWAITING_REVIEW:
-      return "bg-purple-100 text-purple-700 dark:bg-purple-800/30 dark:text-purple-400";
+      return "bg-purple-800/30 text-purple-400";
     case EOStatus.UNCLEAR:
-      return "bg-orange-100 text-orange-700 dark:bg-orange-800/30 dark:text-orange-400";
+      return "bg-orange-800/30 text-orange-400";
     case EOStatus.COMPLETE:
-      return "bg-blue-100 text-blue-700 dark:bg-blue-800/30 dark:text-blue-400";
+      return "bg-blue-800/30 text-blue-400";
     default:
-      return "bg-gray-100 text-gray-700 dark:bg-gray-800/30 dark:text-gray-400";
+      return "bg-gray-800/30 text-gray-400";
   }
 }
