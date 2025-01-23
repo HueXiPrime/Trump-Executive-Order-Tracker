@@ -11,6 +11,7 @@ import {
 } from "lucide-react";
 import executiveOrders from "@/data/executive-orders.json";
 import StatCard from "@/components/StatCard";
+import { EOStatus } from "@/types/statusEnum";
 
 export default function Home() {
   // Calculate statistics
@@ -51,14 +52,30 @@ export default function Home() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="grid grid-cols-2 gap-6 sm:grid-cols-4 mb-16"
         >
-          <StatCard title="Total EOs" value={totalEOs} icon={<FileText />} />
-          <StatCard title="Blocked" value={blockedByLawsuit} icon={<Scale />} />
+          <StatCard
+            title="Total EOs"
+            value={totalEOs}
+            icon={<FileText />}
+            status="ALL"
+          />
+          <StatCard
+            title="Blocked"
+            value={blockedByLawsuit}
+            icon={<Scale />}
+            status={EOStatus.BLOCKED}
+          />
           <StatCard
             title="In Progress"
             value={inProgress}
             icon={<BarChart2 />}
+            status={EOStatus.IN_PROGRESS}
           />
-          <StatCard title="Unclear" value={unclear} icon={<AlertTriangle />} />
+          <StatCard
+            title="Unclear"
+            value={unclear}
+            icon={<AlertTriangle />}
+            status={EOStatus.UNCLEAR}
+          />
         </motion.div>
 
         {/* CTA Buttons */}

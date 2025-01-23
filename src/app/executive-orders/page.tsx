@@ -6,13 +6,17 @@ import executiveOrders from "@/data/executive-orders.json";
 import { EOStatus, type ExecutiveOrder } from "@/types/statusEnum";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useSearchParams } from "next/navigation";
 
 // Cast the JSON data to match the ExecutiveOrder type
 const typedExecutiveOrders = executiveOrders as unknown as ExecutiveOrder[];
 
 export default function ExecutiveOrders() {
+  const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedStatus, setSelectedStatus] = useState<EOStatus | "ALL">("ALL");
+  const [selectedStatus, setSelectedStatus] = useState<EOStatus | "ALL">(
+    (searchParams.get("status") as EOStatus | "ALL") || "ALL"
+  );
   const [sortColumn, setSortColumn] =
     useState<keyof ExecutiveOrder>("signedDate");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
