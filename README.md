@@ -9,35 +9,6 @@ A real-time dashboard tracking the implementation status, legal challenges, and 
 - 🔍 Searchable and filterable database
 - 📱 Responsive design for all devices
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js 20.0 or later
-
-### Installation
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/HueXiPrime/Trump-Executive-Order-Tracker.git
-cd Trump-Executive-Order-Tracker
-```
-
-2. Install dependencies:
-
-```bash
-npm install
-```
-
-3. Start the development server:
-
-```bash
-npm run dev
-```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser.
-
 ## Contributing
 
 We love welcome contributions! There are two main ways to contribute:
@@ -67,6 +38,37 @@ Each executive order entry contains:
 - Known lawsuits (if any)
 - Impact forecast
 - Stall probability
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js 20.0 or later
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/HueXiPrime/Trump-Executive-Order-Tracker.git
+cd Trump-Executive-Order-Tracker
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+
 
 ## Tech Stack
 
