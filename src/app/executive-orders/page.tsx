@@ -61,16 +61,16 @@ export default function ExecutiveOrders() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="relative flex items-center justify-center mb-8"
+          className="flex flex-col gap-4 mb-8"
         >
           <Link
             href="/"
-            className="absolute left-0 inline-flex items-center text-primary hover:text-primary-hover transition-colors"
+            className="inline-flex items-center text-primary hover:text-primary-hover transition-colors"
           >
             <ArrowLeft className="h-4 w-4 mr-2" />
             Back to Home
           </Link>
-          <h1 className="text-4xl font-bold text-foreground">
+          <h1 className="text-4xl font-bold text-foreground text-center">
             Executive Orders Tracker
           </h1>
         </motion.div>
