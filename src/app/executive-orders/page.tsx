@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, Suspense } from "react";
 import { Search, ChevronDown, ChevronUp, ArrowLeft } from "lucide-react";
 import executiveOrders from "@/data/executive-orders.json";
 import { EOStatus, type ExecutiveOrder } from "@/types/statusEnum";
@@ -11,7 +11,7 @@ import { useSearchParams } from "next/navigation";
 // Cast the JSON data to match the ExecutiveOrder type
 const typedExecutiveOrders = executiveOrders as unknown as ExecutiveOrder[];
 
-export default function ExecutiveOrders() {
+function ExecutiveOrdersContent() {
   const searchParams = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedStatus, setSelectedStatus] = useState<EOStatus | "ALL">(
@@ -200,6 +200,20 @@ export default function ExecutiveOrders() {
         </motion.div>
       </main>
     </div>
+  );
+}
+
+export default function ExecutiveOrders() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen bg-background text-foreground flex items-center justify-center">
+          <div className="text-xl">Loading...</div>
+        </div>
+      }
+    >
+      <ExecutiveOrdersContent />
+    </Suspense>
   );
 }
 
