@@ -52,7 +52,7 @@ We love welcome contributions! There are two main ways to contribute:
 
 - Create an issue with your suggested changes
 
-For detailed contribution guidelines, visit our [Contribution Guide](/contribute).
+For detailed contribution guidelines, visit our [Contribution Guide](https://www.theexecutiveordertracker.com/contribute).
 
 ## Data Structure
 
