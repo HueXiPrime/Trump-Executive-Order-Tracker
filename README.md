@@ -98,6 +98,6 @@ MIT License - feel free to use this code for your own projects.
 
 ## Acknowledgments
 
-- Data curated by [Ben Shindel](https://x.com/BenShindel)
+- Initial data curated by [Ben Shindel](https://x.com/BenShindel)
 - Inspired by [Eigen's tweet](https://x.com/eigenrobot/status/1882143122945401306)
 - Built with ❤️ by [Hue](https://x.com/huexi_)
