@@ -10,7 +10,7 @@ import {
   AlertTriangle,
 } from "lucide-react";
 import { useEffect, useState } from "react";
-import { EOStatus } from "@/types/statusEnum";
+import { EOStatus, type ExecutiveOrder } from "@/types/statusEnum";
 import StatCard from "@/components/StatCard";
 
 export default function Home() {
@@ -27,17 +27,17 @@ export default function Home() {
       "https://raw.githubusercontent.com/HueXiPrime/executive-orders-data/refs/heads/main/executive-orders.json"
     )
       .then((res) => res.json())
-      .then((executiveOrders) => {
+      .then((executiveOrders: ExecutiveOrder[]) => {
         setStats({
           totalEOs: executiveOrders.length,
           blockedByLawsuit: executiveOrders.filter(
-            (eo: any) => eo.status === "Blocked by lawsuit"
+            (eo: ExecutiveOrder) => eo.status === EOStatus.BLOCKED
           ).length,
           inProgress: executiveOrders.filter(
-            (eo: any) => eo.status === "Implementation in progress"
+            (eo: ExecutiveOrder) => eo.status === EOStatus.IN_PROGRESS
           ).length,
           unclear: executiveOrders.filter(
-            (eo: any) => eo.status === "Unclear / Hard to implement"
+            (eo: ExecutiveOrder) => eo.status === EOStatus.UNCLEAR
           ).length,
         });
         setLoading(false);
