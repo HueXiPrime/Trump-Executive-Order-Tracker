@@ -1,22 +1,19 @@
 # Trump Executive Order Tracker
 
-A real-time dashboard tracking the implementation status, legal challenges, and impact of Trump administration executive orders. Built with Next.js 15, React 19, and Tailwind CSS.
+A real-time dashboard tracking the implementation status, legal challenges, and impact of Trump administration executive orders.
 
 ## Features
 
+- 🤝 Community-driven updates
 - 📊 Real-time status tracking of executive orders
 - 🔍 Searchable and filterable database
 - 📱 Responsive design for all devices
-- 🌓 Dark mode support
-- ⚡ Built for performance with Next.js 15
-- 🤝 Community-driven updates
 
 ## Getting Started
 
 ### Prerequisites
 
 - Node.js 20.0 or later
-- Yarn package manager
 
 ### Installation
 
