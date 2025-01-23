@@ -2,13 +2,7 @@
 
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  ExternalLink,
-  Scale,
-  AlertTriangle,
-  Clock,
-} from "lucide-react";
+import { ArrowLeft, ExternalLink, Scale, Clock } from "lucide-react";
 import Link from "next/link";
 import executiveOrders from "@/data/executive-orders.json";
 import { ExecutiveOrder } from "@/types/statusEnum";

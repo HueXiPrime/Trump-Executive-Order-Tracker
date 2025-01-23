@@ -20,6 +20,11 @@ export type ExecutiveOrder = {
   signedDate: string;
   forecastStall: number;
   forecastImpact: number;
-  lawsuits: any[];
+  lawsuits: Lawsuit[];
   lastUpdated: string;
 };
+
+interface Lawsuit {
+  caseName: string;
+  description: string;
+}

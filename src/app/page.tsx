@@ -21,7 +21,6 @@ export default function Home() {
   const inProgress = executiveOrders.filter(
     (eo) => eo.status === "Implementation in progress"
   ).length;
-  const active = executiveOrders.filter((eo) => eo.status === "Active").length;
   const unclear = executiveOrders.filter(
     (eo) => eo.status === "Unclear / Hard to implement"
   ).length;
@@ -41,7 +40,7 @@ export default function Home() {
           </h1>
           <p className="mt-6 text-lg text-gray-600 dark:text-gray-400 sm:mx-auto sm:max-w-2xl">
             A community-driven effort to track the status, implementation, and
-            legal challenges of Trump's Executive Orders.
+            legal challenges of Trump&apos;s Executive Orders.
           </p>
         </motion.div>
 

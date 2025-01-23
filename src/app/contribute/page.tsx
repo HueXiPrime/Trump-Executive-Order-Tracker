@@ -18,7 +18,7 @@ export default function Contribute() {
         {/* Back Button */}
         <Link
           href="/"
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 mb-8"
+          className="inline-flex items-center text-primary hover:text-primary-hover mb-8"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Home
@@ -86,8 +86,8 @@ export default function Contribute() {
                 Via GitHub Issues
               </h3>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Don't want to edit JSON? Create an issue with your suggested
-                changes.
+                Don&apos;t want to edit JSON? Create an issue with your
+                suggested changes.
               </p>
               <a
                 href="https://github.com/HueXiPrime/Trump-Executive-Order-Tracker/issues/new"
@@ -139,10 +139,18 @@ export default function Contribute() {
                   Status Guidelines
                 </h3>
                 <ul className="list-disc list-inside text-gray-600 dark:text-gray-400 mb-4">
-                  <li>Use "Unclear" if implementation status is uncertain</li>
-                  <li>Mark as "Blocked" only with official court orders</li>
-                  <li>Use "Implementation in progress" for partial rollouts</li>
-                  <li>Update "lastUpdated" field with each change</li>
+                  <li>
+                    Use &quot;Unclear&quot; if implementation status is
+                    uncertain
+                  </li>
+                  <li>
+                    Mark as &quot;Blocked&quot; only with official court orders
+                  </li>
+                  <li>
+                    Use &quot;Implementation in progress&quot; for partial
+                    rollouts
+                  </li>
+                  <li>Update &quot;lastUpdated&quot; field with each change</li>
                 </ul>
 
                 {/* New Status Values Section */}
